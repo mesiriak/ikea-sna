@@ -2,7 +2,12 @@ import asyncio
 
 
 async def main() -> None:
-    pass
+    from utils.json import JSONSerializer
+
+    file = await JSONSerializer.look("cats.json")
+
+    for item, value in file.items():
+        print(f'\"{item}\": \"\",') 
 
 
 if __name__ == "__main__":
