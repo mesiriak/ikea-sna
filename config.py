@@ -13,7 +13,7 @@ class Config(BaseSettings):
     # IKEA api link
     STATIC_RQ_LINK: str = "https://sik.search.blue.cdtapps.com/pl/pl/product-list-page/more-products?category={category}&start=0&end=6666666"
 
-    # categories .json file 
+    # categories .json file
     CAT_FILE: str = "cats.json"
 
     # categories names .json file

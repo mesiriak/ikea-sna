@@ -10,10 +10,10 @@ class HTTPXClient:
     async def _get_sync_client() -> Client:
         return Client()
 
-    def __new__(self) -> AsyncClient | Client:
+    async def __new__(self) -> AsyncClient | Client:
         config = get_config()
 
         if config.ASYNC == True:
-            return self._get_async_client()
+            return await self._get_async_client()
 
         return self._get_sync_client()

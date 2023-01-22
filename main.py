@@ -1,13 +1,15 @@
+from events.decorators import pre_start
+from core.categories import Session
+
 import asyncio
 
 
+@pre_start
 async def main() -> None:
-    from utils.json import JSONSerializer
 
-    file = await JSONSerializer.look("cats.json")
+    session = Session()
 
-    for item, value in file.items():
-        print(f'\"{item}\": \"\",') 
+    await session()
 
 
 if __name__ == "__main__":
