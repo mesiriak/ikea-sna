@@ -1,0 +1,9 @@
+
+# Python dirs
+__pycache__
+
+# IDE jokes
+.idea
+
+# OS files
+.DS_Store

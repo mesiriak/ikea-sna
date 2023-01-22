@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "ikea-async"
+version = "0.1.0"
+description = ""
+authors = ["mesiriak"]
+readme = "README.md"
+packages = [{include = "ikea_async"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pydantic = "^1.10.4"
+asyncio = "^3.4.3"
+httpx = "^0.23.3"
+bs4 = "^0.0.1"
+lxml = "^4.9.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
