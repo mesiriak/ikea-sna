@@ -1,19 +1,17 @@
-from config import get_config
-
-from httpx import AsyncClient, Client
+from httpx import Client, AsyncClient, Limits
 
 
-class HTTPXClient:
-    async def _get_async_client() -> AsyncClient:
-        return AsyncClient()
+class BaseClient:
+    limits = Limits(max_connections=None, max_keepalive_connections=None)
 
-    async def _get_sync_client() -> Client:
-        return Client()
 
-    async def __new__(self) -> AsyncClient | Client:
-        config = get_config()
+class AsyncRqClient(BaseClient):
+    async def get_client(self) -> AsyncClient:
 
-        if config.ASYNC == True:
-            return await self._get_async_client()
+        return AsyncClient(limits=self.limits)
 
-        return self._get_sync_client()
+
+class SyncRqClient(BaseClient):
+    def get_client(self) -> Client:
+
+        return Client(limits=self.limits)

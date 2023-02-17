@@ -1,21 +1,23 @@
-from events.decorators import pre_start
-from core.categories import Session
-
 import asyncio
 
-import time
+import uvloop
 
-@pre_start
-async def main() -> None:
+from config import get_config
+from core.process import AsyncProcess, SyncProcess
+from events.decorators import on_startup
 
 
-    t1 = time.time()
-    session = Session()
+@on_startup
+async def main():
+    config = get_config()
+    if config.ASYNC is True:
+        session = AsyncProcess()
+        await session()
+    else:
+        session = SyncProcess()
+        session()
 
-    await session()
-    t2 = time.time() - t1
-
-    print(t2)
 
 if __name__ == "__main__":
+    asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
     asyncio.run(main())

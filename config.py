@@ -19,6 +19,8 @@ class Config(BaseSettings):
     # categories names .json file
     CAT_NAMES: str = "catnames.json"
 
+    OUTPUT_DIR: str = "output"
+
     class Config:
         env_file = ".env"
 

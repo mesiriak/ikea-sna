@@ -1,7 +1,9 @@
-from utils.dirs import DIRMaker
+from utils.dirs import output_checker, output_delete
 
 
-def pre_start(func):
+def on_startup(func):
+    output_checker()
+    output_delete()
 
-    DIRMaker.delete_output()
     return func
+

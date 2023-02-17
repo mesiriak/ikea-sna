@@ -1,17 +1,7 @@
 import json
+from typing import Any
 
 
-class JSONSerializer:
-    @staticmethod
-    async def look(file_name: str) -> str:
-        file_text = json.load(open(file_name, "r", encoding="utf-8"))
-
-        return file_text
-
-    @staticmethod
-    async def save() -> bool:
-        pass
-
-    @staticmethod
-    async def create() -> str:
-        pass
+def load_json(path: str) -> dict[str, Any]:
+    with open(path, "r", encoding="utf-8") as file:
+        return json.load(file)
