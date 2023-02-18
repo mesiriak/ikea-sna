@@ -1,30 +1,16 @@
-from pydantic import BaseSettings
-from functools import lru_cache
+# True - if parser should work in async mode, False - otherwise
+ASYNC: bool = True
 
+# True - if async translation, False - if sync
+TRANSLATION_MODE: bool = True
 
-class Config(BaseSettings):
+# IKEA api link
+STATIC_RQ_LINK: str = "https://sik.search.blue.cdtapps.com/pl/pl/product-list-page/more-products?category={category}&start=0&end=6666666"
 
-    # True - if parser should work in async mode, False - otherwise
-    ASYNC: bool = True
+# categories .json file
+CAT_FILE: str = "cats.json"
 
-    # True - if async translation, False - if sync
-    TRANSLATION_MODE: bool = True
+# categories names .json file
+CAT_NAMES: str = "catnames.json"
 
-    # IKEA api link
-    STATIC_RQ_LINK: str = "https://sik.search.blue.cdtapps.com/pl/pl/product-list-page/more-products?category={category}&start=0&end=6666666"
-
-    # categories .json file
-    CAT_FILE: str = "cats.json"
-
-    # categories names .json file
-    CAT_NAMES: str = "catnames.json"
-
-    OUTPUT_DIR: str = "output"
-
-    class Config:
-        env_file = ".env"
-
-
-@lru_cache()
-def get_config() -> Config:
-    return Config()
+OUTPUT_DIR: str = "output"
