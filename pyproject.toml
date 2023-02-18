@@ -1,24 +1,18 @@
 [tool.poetry]
-name = "ikea-async"
+name = "ikea-sna"
 version = "0.1.0"
 description = ""
-authors = ["mesiriak"]
+authors = ["Max iamzhv@gmail.com"]
 readme = "README.md"
-packages = []
+packages = [{include = "ikea_sna"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"
-pydantic = "^1.10.4"
-asyncio = "^3.4.3"
-httpx = "^0.23.3"
-bs4 = "^0.0.1"
-lxml = "^4.9.2"
-black = "^22.12.0"
-gpytranslate = "^1.4.0"
-uvloop = "^0.17.0"
-aiohttp = "^3.8.3"
-openpyxl = "^3.0.10"
+openpyxl = "^3.1.1"
 
+
+[tool.poetry.group.dev.dependencies]
+black = "^23.1.0"
 
 [build-system]
 requires = ["poetry-core"]
