@@ -9,6 +9,7 @@ packages = [{include = "ikea_sna"}]
 [tool.poetry.dependencies]
 python = "^3.10"
 openpyxl = "^3.1.1"
+httpx = "^0.23.3"
 
 
 [tool.poetry.group.dev.dependencies]
