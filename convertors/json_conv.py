@@ -24,6 +24,6 @@ def save(data: list[dict[str, Any]], path: str, name: str = None) -> None:
     return None
 
 
-def load(path: str) -> list[dict[str, Any]]:
+def load(path: str) -> dict[str, Any] | list[dict[str, Any]]:
     with open(path) as file:
         return json.load(file)
