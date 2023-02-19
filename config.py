@@ -24,3 +24,4 @@ EXCHANGE_RATE = 15
 
 # max tasks running in same time
 SEMAPHORE_LIMIT: int = 100
+SEMAPHORE_TRANSLATION_LIMIT: int = 100
