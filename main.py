@@ -1,8 +1,8 @@
-from core.sessions import AsyncSession
+from core.sessions import AsyncParseSession
 
 
 def main() -> None:
-    session = AsyncSession()
+    session = AsyncParseSession()
 
     session()
 

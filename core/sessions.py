@@ -1,9 +1,9 @@
 import asyncio
 
-from core.categories import parse_cats
+from core.parsing.categories import parse_cats
 
 
-class AsyncSession:
+class AsyncParseSession:
     # loop = uvloop.new_event_loop()
     # asyncio.set_event_loop(loop)
 

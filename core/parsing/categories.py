@@ -1,9 +1,7 @@
-import time
-from typing import Any
-
 import config
-from convertors.json_conv import load
-from core.products import parse_page
+from convertors.json_conv import load, save
+from core.parsing.products import parse_page
+from utils.dirs import create_dir
 
 
 async def parse_cats(source: str = "catnames.json") -> None:
@@ -22,7 +20,10 @@ async def parse_cats(source: str = "catnames.json") -> None:
     # dir creating should be pasted here
 
     for cat in cats:
-        await parse_subcats(cat=cat, path=config.OUTPUT_DIR + cats[cat])
+        print(f"Category - {cat}, working...")
+        cat_path = create_dir(name=cats[cat])
+        await parse_subcats(cat=cat, path=cat_path)
+        print(f"Category - {cat}, finished")
 
 
 async def parse_subcats(cat: str, path: str, source: str = "cats.json") -> None:
@@ -40,11 +41,10 @@ async def parse_subcats(cat: str, path: str, source: str = "cats.json") -> None:
     """
     subcats = load(source)[cat]
 
-    products = []
-
-    # dir creating should be pasted here also
-
     for subcat in subcats:
-        products += await parse_page(subcat=subcat)
-
-    # save to json in created dir here
+        subcat_path = create_dir(name=subcat, source=path)
+        print(f"{cat} - subcategory {subcat} parsing")
+        subcat_results = await parse_page(subcat=subcat)
+        # asyncio.create_task(parse_page(subcat=subcat))
+        save(data=subcat_results, path=subcat_path, name="products")
+        print(f"{cat} - subcategory {subcat} ready")
